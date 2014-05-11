@@ -5,12 +5,17 @@ ifeq ($(HOST_OS), Darwin)
 	KSP_MANAGED_PATH ?= $(KSP_PATH)/KSP.app/Contents/Data/Managed
 endif
 
+BUILD_OUTPUT ?= build
+
+CS ?= gmcs
+
 KSPFLAGS ?= -noconfig -lib:$(KSP_MANAGED_PATH) \
 	 -reference:$(KSP_ASSEMBLIES)
 CSFLAGS ?=
 
 KSP_ASSEMBLIES := Assembly-CSharp,Assembly-CSharp-firstpass,UnityEngine
 
+TARGETS := Plugin/RSpace.dll
 SOURCES := $(wildcard *.cs)
 
 Q := @
@@ -22,16 +27,15 @@ ifeq ($(debug), 1)
 	CSFLAGS += -debug:full -define:DEBUG
 endif
 
-CS ?= gmcs
-
-all: RSpace.dll
+all: $(addprefix build/, $(TARGETS))
 
 %.dll:
+	$(Q)mkdir -p $(dir $(@))
 	$(Q)$(CS) -t:library -out:$(@) $(KSPFLAGS) $(CSFLAGS) $(^)
 
-RSpace.dll: $(SOURCES)
+$(BUILD_OUTPUT)/Plugin/RSpace.dll: $(SOURCES)
 
 clean:
-	$(Q)rm -f RSpace.dll
+	$(Q)rm -rf $(BUILD_OUTPUT)
 
 .PHONY: all clean
