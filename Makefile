@@ -9,9 +9,9 @@ BUILD_OUTPUT ?= build
 
 CS ?= gmcs
 
-KSPFLAGS ?= -noconfig -lib:$(KSP_MANAGED_PATH) \
+KSPFLAGS ?= -lib:$(KSP_MANAGED_PATH) \
 	 -reference:$(KSP_ASSEMBLIES)
-CSFLAGS ?=
+CSFLAGS ?= -langversion:4
 
 KSP_ASSEMBLIES := Assembly-CSharp,Assembly-CSharp-firstpass,UnityEngine
 
