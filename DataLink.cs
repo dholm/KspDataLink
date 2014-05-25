@@ -34,6 +34,14 @@ namespace KspDataLink
             }
         }
 
+        public UdpPortMonitor UdpPortMonitor
+        {
+            get
+            {
+                return udpPortMonitor;
+            }
+        }
+
         public FlightGlobalsMonitor FlightGlobalsMonitor
         {
             get

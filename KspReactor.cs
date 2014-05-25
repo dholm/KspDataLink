@@ -96,6 +96,8 @@ namespace KspDataLink
                 flightGlobalsMonitor.Update(FlightGlobals.ActiveVessel,
                                             FlightGlobals.fetch);
             }
+
+            dataLink.UdpPortMonitor.Update();
         }
 
         public void OnGUI()
