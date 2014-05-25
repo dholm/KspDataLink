@@ -88,10 +88,10 @@ namespace KspDataLink
         {
             if (FlightGlobals.fetch != null)
             {
-                VesselMonitor vesselMonitor = dataLink.VesselMonitor;
-                Vessel        activeVessel  = FlightGlobals.ActiveVessel;
+                var flightGlobalsMonitor = dataLink.FlightGlobalsMonitor;
 
-                vesselMonitor.UpdateActiveVessel(activeVessel);
+                flightGlobalsMonitor.Update(FlightGlobals.ActiveVessel,
+                                            FlightGlobals.fetch);
             }
         }
 

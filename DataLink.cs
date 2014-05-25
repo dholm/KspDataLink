@@ -6,17 +6,17 @@ namespace KspDataLink
     {
         public static String Name = "KspDataLink";
 
-        private Configuration config;
-        private Gui           gui;
-        private VesselMonitor vesselMonitor;
+        private Configuration        config;
+        private Gui                  gui;
+        private FlightGlobalsMonitor flightGlobalsMonitor;
 
         public DataLink()
         {
             Logger.debug("Creating DataLink..");
 
-            config        = new Configuration();
-            gui           = new Gui(config);
-            vesselMonitor = new VesselMonitor();
+            config               = new Configuration();
+            gui                  = new Gui(config);
+            flightGlobalsMonitor = new FlightGlobalsMonitor();
         }
 
         public Gui Gui
@@ -27,11 +27,11 @@ namespace KspDataLink
             }
         }
 
-        public VesselMonitor VesselMonitor
+        public FlightGlobalsMonitor FlightGlobalsMonitor
         {
             get
             {
-                return vesselMonitor;
+                return flightGlobalsMonitor;
             }
         }
     }
