@@ -1,0 +1,6 @@
+namespace KspDataLink
+{
+    interface ITap
+    {
+    }
+}

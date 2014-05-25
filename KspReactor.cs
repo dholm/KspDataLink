@@ -15,26 +15,14 @@ namespace KspDataLink
         protected DataLink dataLink;
 
 #region Events
-        public void Start()
+        public override void OnAwake()
         {
-            Logger.debug("Starting up..");
-
-            DontDestroyOnLoad(this);
+            Logger.debug("Waking up..");
 
             dataLink = new DataLink();
         }
 
-        public void Awake()
-        {
-            Logger.debug("Waking up..");
-        }
-
-        public void OnDestroy()
-        {
-            Logger.debug("Shutting down..");
-        }
-
-        public void Update()
+        public override void OnUpdate()
         {
         }
 #endregion
