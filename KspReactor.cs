@@ -42,6 +42,17 @@ namespace KspDataLink
             }
         }
 
+        private static void Destroy()
+        {
+            if (instance != null)
+            {
+                Logger.debug("Destroying reactor instance..");
+
+                GameObject.Destroy(instance);
+                instance = null;
+            }
+        }
+
         public static GameObject Instance
         {
             get
@@ -63,14 +74,14 @@ namespace KspDataLink
             Create();
         }
 
+        public void OnDestroy()
+        {
+            Destroy();
+        }
+
         public void Start()
         {
             Logger.debug("Starting {0}..", GetType().Name);
-        }
-
-        public void OnDestroy()
-        {
-            Logger.debug("Shutting down {0}..", GetType().Name);
         }
 
         public void Update()
