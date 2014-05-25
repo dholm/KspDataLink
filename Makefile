@@ -15,7 +15,7 @@ CSFLAGS ?= -langversion:4
 
 KSP_ASSEMBLIES := Assembly-CSharp,Assembly-CSharp-firstpass,UnityEngine
 
-TARGETS := Plugin/RSpace.dll
+TARGETS := Plugins/KspDataLink.dll
 SOURCES := $(wildcard *.cs)
 
 Q := @
@@ -33,7 +33,7 @@ all: $(addprefix build/, $(TARGETS))
 	$(Q)mkdir -p $(dir $(@))
 	$(Q)$(CS) -t:library -out:$(@) $(KSPFLAGS) $(CSFLAGS) $(^)
 
-$(BUILD_OUTPUT)/Plugin/RSpace.dll: $(SOURCES)
+$(BUILD_OUTPUT)/Plugins/KspDataLink.dll: $(SOURCES)
 
 clean:
 	$(Q)rm -rf $(BUILD_OUTPUT)

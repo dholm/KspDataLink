@@ -31,7 +31,7 @@ using System.Text;
 using UnityEngine;
 
 // TODO: Change to your plugin's namespace here.
-namespace RSpace {
+namespace KspDataLink {
         /**********************************************************\
         *          --- DO NOT EDIT BELOW THIS COMMENT ---          *
         *                                                          *

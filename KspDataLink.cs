@@ -4,14 +4,14 @@ using System.Reflection;
 
 using UnityEngine;
 
-namespace RSpace
+namespace KspDataLink
 {
     [KSPAddon(KSPAddon.Startup.Flight, false)]
-    public class RSpaceFlight : RSpace
+    public class KspDataLinkFlight : KspDataLink
     {
     }
 
-    public partial class RSpace : MonoBehaviour
+    public partial class KspDataLink : MonoBehaviour
     {
         private IButton toolbarButton = null;
 
@@ -23,7 +23,7 @@ namespace RSpace
             }
         }
 
-        public RSpace()
+        public KspDataLink()
         {
         }
 
