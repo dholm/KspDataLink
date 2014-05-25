@@ -10,35 +10,72 @@ namespace KspDataLink
     {
     }
 
-    [KSPAddon(KSPAddon.Startup.Flight, false)]
-    public class FlightReactor : KspReactor
-    {
-    }
-
     [KSPAddon(KSPAddon.Startup.TrackingStation, false)]
     public class TrackingStationReactor : KspReactor
     {
     }
 
-    public partial class KspReactor : InternalModule
+    [KSPAddon(KSPAddon.Startup.Flight, false)]
+    public class FlightReactor : KspReactor
     {
-        private DataLink      dataLink      = null;
-        private VesselMonitor vesselMonitor = null;
+    }
 
-#region Events
-        public override void OnAwake()
+    public partial class KspReactor : MonoBehaviour
+    {
+        private static GameObject instance = null;
+        private static DataLink   dataLink = null;
+
+        private static void Create()
         {
-            Logger.debug("Waking up..");
+            instance = GameObject.Find(DataLink.Name);
+            if (instance == null)
+            {
+                Logger.debug("Creating reactor instance..");
 
-            dataLink = new DataLink();
-            vesselMonitor = new VesselMonitor();
+                dataLink = new DataLink();
+                instance = new GameObject(DataLink.Name, typeof(KspReactor));
+            }
         }
 
-        public override void OnUpdate()
+        public static GameObject Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    Create();
+                }
+
+                return instance;
+            }
+        }
+
+#region Events
+        public void Awake()
+        {
+            DontDestroyOnLoad(this);
+
+            Create();
+        }
+
+        public void Start()
+        {
+            Logger.debug("Starting {0}..", GetType().Name);
+        }
+
+        public void OnDestroy()
+        {
+            Logger.debug("Shutting down {0}..", GetType().Name);
+        }
+
+        public void Update()
         {
             if (FlightGlobals.fetch != null)
             {
-                vesselMonitor.UpdateActiveVessel(FlightGlobals.ActiveVessel);
+                VesselMonitor vesselMonitor = dataLink.VesselMonitor;
+                Vessel        activeVessel  = FlightGlobals.ActiveVessel;
+
+                vesselMonitor.UpdateActiveVessel(activeVessel);
             }
         }
 #endregion

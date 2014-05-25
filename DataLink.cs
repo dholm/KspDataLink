@@ -4,13 +4,25 @@ namespace KspDataLink
 {
     public class DataLink
     {
-        private Gui gui;
-
         public static String Name = "KspDataLink";
+
+        private Gui           gui;
+        private VesselMonitor vesselMonitor;
 
         public DataLink()
         {
-            gui = new Gui();
+            Logger.debug("Creating DataLink..");
+
+            gui           = new Gui();
+            vesselMonitor = new VesselMonitor();
+        }
+
+        public VesselMonitor VesselMonitor
+        {
+            get
+            {
+                return vesselMonitor;
+            }
         }
     }
 }
