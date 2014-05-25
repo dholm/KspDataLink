@@ -6,6 +6,7 @@ namespace KspDataLink
     {
         public static String Name = "KspDataLink";
 
+        private Configuration config;
         private Gui           gui;
         private VesselMonitor vesselMonitor;
 
@@ -13,7 +14,8 @@ namespace KspDataLink
         {
             Logger.debug("Creating DataLink..");
 
-            gui           = new Gui();
+            config        = new Configuration();
+            gui           = new Gui(config);
             vesselMonitor = new VesselMonitor();
         }
 

@@ -12,7 +12,7 @@ namespace KspDataLink
         private Vector2 windowSize    = new Vector2(280, 400);
         private Rect    windowPos     = new Rect(0, 60, 280, 400);
 
-        private String port = "9090";
+        private Configuration config = null;
 
         private void ToolbarInstall()
         {
@@ -32,8 +32,10 @@ namespace KspDataLink
             }
         }
 
-        public Gui()
+        public Gui(Configuration config)
         {
+            this.config = config;
+
             ToolbarInstall();
         }
 
@@ -101,14 +103,15 @@ namespace KspDataLink
 
             GUILayout.BeginHorizontal();
             GUILayout.Label("Port: ");
-            port = GUILayout.TextField(port, GUILayout.ExpandWidth(true));
+            String port = GUILayout.TextField(String.Format("{0}", config.Port),
+                                              GUILayout.ExpandWidth(true));
             GUILayout.EndHorizontal();
 
             GUILayout.BeginHorizontal();
             if (GUILayout.Button("Apply", buttonStyle, GUILayout.Width(150.0F),
                                  GUILayout.Height(25.0F)))
             {
-                Logger.debug("Commit port: {0}", port);
+                config.Port = Convert.ToUInt16(port);
             }
             GUILayout.EndVertical();
 
