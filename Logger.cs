@@ -8,7 +8,8 @@ namespace KspDataLink
     {
         private static void log(String level, String message)
         {
-            String logStr = String.Format("[KspDataLink {0}] {1}", level, message);
+            String logStr = String.Format("[{0} {1}] {2}", DataLink.Name, level,
+                                          message);
             Console.WriteLine(logStr);
             UnityEngine.Debug.Log(logStr);
         }
