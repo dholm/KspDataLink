@@ -15,7 +15,7 @@ CSFLAGS ?= -langversion:4
 
 KSP_ASSEMBLIES := Assembly-CSharp,Assembly-CSharp-firstpass,UnityEngine
 
-TARGETS := Plugins/KspDataLink.dll
+TARGETS := Plugins/KspDataLink.dll Parts Textures
 SOURCES := $(wildcard *.cs)
 
 Q := @
@@ -34,6 +34,12 @@ all: $(addprefix build/, $(TARGETS))
 	$(Q)$(CS) -t:library -out:$(@) $(KSPFLAGS) $(CSFLAGS) $(^)
 
 $(BUILD_OUTPUT)/Plugins/KspDataLink.dll: $(SOURCES)
+
+$(BUILD_OUTPUT)/Parts:
+	$(Q)ln -s $(PWD)/Parts $(@)
+
+$(BUILD_OUTPUT)/Textures:
+	$(Q)ln -s $(PWD)/Textures $(@)
 
 clean:
 	$(Q)rm -rf $(BUILD_OUTPUT)
