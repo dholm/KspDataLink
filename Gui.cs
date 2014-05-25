@@ -14,7 +14,7 @@ namespace KspDataLink
 
                 toolbarButton = ToolbarManager.Instance.add(DataLink.Name,
                                                             DataLink.Name);
-                string buttonOff = String.Format("{0}/Textures/{0}_off",
+                string buttonOff = String.Format("{0}/Textures/{0}-off",
                                                  DataLink.Name);
                 toolbarButton.TexturePath = buttonOff;
                 toolbarButton.ToolTip = String.Format("Open {0}",
