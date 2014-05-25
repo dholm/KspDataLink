@@ -6,34 +6,36 @@ namespace KspDataLink
 {
     public class Logger
     {
-        private static void log(String level, String message)
+        private static void log(String level, String format,
+                                params object[] args)
         {
+            String message = String.Format(format, args);
             String logStr = String.Format("[{0} {1}] {2}", DataLink.Name, level,
                                           message);
             Console.WriteLine(logStr);
             UnityEngine.Debug.Log(logStr);
         }
 
-        public static void debug(String message)
+        public static void debug(String format, params object[] args)
         {
 #if (DEBUG)
-            Logger.log("Debug", message);
+            Logger.log("Debug", format, args);
 #endif
         }
 
-        public static void info(String message)
+        public static void info(String format, params object[] args)
         {
-            Logger.log("Info", message);
+            Logger.log("Info", format, args);
         }
 
-        public static void warning(String message)
+        public static void warning(String format, params object[] args)
         {
-            Logger.log("Warning", message);
+            Logger.log("Warning", format, args);
         }
 
-        public static void error(String message)
+        public static void error(String format, params object[] args)
         {
-            Logger.log("Error", message);
+            Logger.log("Error", format, args);
         }
     }
 }
