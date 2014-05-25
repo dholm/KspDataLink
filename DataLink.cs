@@ -9,6 +9,7 @@ namespace KspDataLink
         private Configuration        config;
         private Gui                  gui;
         private FlightGlobalsMonitor flightGlobalsMonitor;
+        private UdpPortMonitor       udpPortMonitor;
 
         public DataLink()
         {
@@ -17,6 +18,12 @@ namespace KspDataLink
             config               = new Configuration();
             gui                  = new Gui(config);
             flightGlobalsMonitor = new FlightGlobalsMonitor();
+            udpPortMonitor       = new UdpPortMonitor(config.Port);
+        }
+
+        public void Destroy()
+        {
+            udpPortMonitor.Destroy();
         }
 
         public Gui Gui

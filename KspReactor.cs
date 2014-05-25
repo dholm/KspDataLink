@@ -48,6 +48,9 @@ namespace KspDataLink
             {
                 Logger.debug("Destroying reactor instance..");
 
+                dataLink.Destroy();
+                dataLink = null;
+
                 GameObject.Destroy(instance);
                 instance = null;
             }

@@ -9,7 +9,6 @@ namespace KspDataLink
         private IButton toolbarButton = null;
         private bool    active        = false;
         private int     windowId      = 756876;
-        private Vector2 windowSize    = new Vector2(280, 400);
         private Rect    windowPos     = new Rect(0, 60, 280, 400);
 
         private Configuration config = null;
