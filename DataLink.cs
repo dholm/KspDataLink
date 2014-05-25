@@ -17,6 +17,14 @@ namespace KspDataLink
             vesselMonitor = new VesselMonitor();
         }
 
+        public Gui Gui
+        {
+            get
+            {
+                return gui;
+            }
+        }
+
         public VesselMonitor VesselMonitor
         {
             get

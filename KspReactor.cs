@@ -5,6 +5,11 @@ using UnityEngine;
 
 namespace KspDataLink
 {
+    [KSPAddon(KSPAddon.Startup.SpaceCentre, false)]
+    public class SpaceCenterReactor : KspReactor
+    {
+    }
+
     [KSPAddon(KSPAddon.Startup.EditorAny, false)]
     public class EditorReactor : KspReactor
     {
@@ -77,6 +82,11 @@ namespace KspDataLink
 
                 vesselMonitor.UpdateActiveVessel(activeVessel);
             }
+        }
+
+        public void OnGUI()
+        {
+            dataLink.Gui.OnGui();
         }
 #endregion
     }
